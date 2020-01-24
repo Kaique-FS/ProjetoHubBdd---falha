@@ -6,9 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import br.com.rsinet.hub.projetobdd.pageobjects.SearchHomeLupa;
-import br.com.rsinet.hub.projetobdd.pageobjects.SearchHomePage;
 import br.com.rsinet.hub.projetobdd.utility.Constant;
-import cucumber.api.PendingException;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;

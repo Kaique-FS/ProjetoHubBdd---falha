@@ -1,17 +1,28 @@
 package br.com.rsinet.hub.projetobdd.pageobjects;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class SearchHomePage {
+public class HomePage {
 
-	public SearchHomePage(WebDriver driver) {
+	public HomePage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
+	
+	//Dados para logIn/cadastro
 
+	@FindBy(how = How.ID, using = "menuUserLink") 
+	private WebElement btn_user;
+	
+	@FindBy(how = How.XPATH, using = "/html/body/login-modal/div/div/div[3]/a[2]") 
+	private WebElement btn_newuser;
+	
+	//pesquisa massa de dados
+	
 	@FindBy(how = How.XPATH, using = "//*[@id=\'tabletsImg\']") // How = By | using = elemento
 	private WebElement btn_tablets;
 
@@ -21,6 +32,13 @@ public class SearchHomePage {
 	@FindBy(how = How.NAME, using = "save_to_cart")
 	private WebElement btn_addcart;
 	
+	public void Clica_usuario() {
+		btn_user.click();
+	}
+	
+	public void Clica_novo_usuario() {
+		btn_newuser.sendKeys(Keys.ENTER);
+	}
 
 	public void Clica_Produto_Home() {
 		btn_tablets.click();
@@ -33,5 +51,6 @@ public class SearchHomePage {
 	public void Adiciona_Produto_No_Carrinho() {
 		btn_addcart.click();
 	}
+	
 	
 }
