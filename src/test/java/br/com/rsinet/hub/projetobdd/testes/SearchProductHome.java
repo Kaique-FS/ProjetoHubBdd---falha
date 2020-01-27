@@ -6,7 +6,12 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import br.com.rsinet.hub.projetobdd.dataProvider.ConfigFileReader;
+import br.com.rsinet.hub.projetobdd.managers.FileReaderManager;
+import br.com.rsinet.hub.projetobdd.managers.PageObjectManager;
 import br.com.rsinet.hub.projetobdd.pageobjects.HomePage;
+import br.com.rsinet.hub.projetobdd.pageobjects.RegisterPage;
+import br.com.rsinet.hub.projetobdd.pageobjects.SearchHomeLupa;
 import br.com.rsinet.hub.projetobdd.utility.Constant;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
@@ -14,17 +19,23 @@ import cucumber.api.java.pt.Quando;
 
 public class SearchProductHome {
 
-	private static WebDriver driver;
+	WebDriver driver;
 	HomePage HP;
-
+	RegisterPage RP;
+	SearchHomeLupa SHL;
+	PageObjectManager pageObjectManager;
+	ConfigFileReader configFileReader;
+	
 	@Dado("^usuario na pagina inicial$")
 	public void usuario_na_pagina_inicial() {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\kaique.silva\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", FileReaderManager.getInstance().getConfigReader().getDriverPath());
 		driver = new ChromeDriver();
 		driver.get(Constant.URL);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		HP = new HomePage(driver);
+		driver.manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigReader().getImplicitlyWait(), TimeUnit.SECONDS);
+		//HP = new HomePage(driver);
+		pageObjectManager = new PageObjectManager(driver);
+		HP = pageObjectManager.getHomePage();
 	}
 
 	@Quando("^clicou no produto$")

@@ -10,8 +10,10 @@ import org.openqa.selenium.support.PageFactory;
 import br.com.rsinet.hub.projetobdd.utility.Constant;
 
 public class SearchHomeLupa {
-	
+	WebDriver driver;
+
 	public SearchHomeLupa(WebDriver driver) {
+		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 
