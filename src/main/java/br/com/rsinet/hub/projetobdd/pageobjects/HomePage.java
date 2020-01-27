@@ -32,6 +32,14 @@ public class HomePage {
 	@FindBy(how = How.NAME, using = "save_to_cart")
 	private WebElement btn_addcart;
 	
+	// menu interativo
+	
+	@FindBy(how = How.XPATH, using = "/html/body/header/nav/ul/li[6]/a")
+	private WebElement btn_popularitems;
+	
+	@FindBy(how = How.ID, using = "details_10")
+	private WebElement btn_produto_meio;
+	
 	public void Clica_usuario() {
 		btn_user.click();
 	}
@@ -52,5 +60,12 @@ public class HomePage {
 		btn_addcart.click();
 	}
 	
+	public void Clica_Items_Populares() {
+		btn_popularitems.click();
+	}
+	
+	public void Clica_No_Produto() {
+		btn_produto_meio.click();
+	}
 	
 }

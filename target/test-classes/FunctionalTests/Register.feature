@@ -9,3 +9,9 @@ Cenario:
 	Quando clicar em logIn
 	E clicar em novo usuario
 	Entao realizar cadastro
+	
+Cenario:
+	Dado usario não cadastrado
+	Quando clicar em logIn
+	E clicar em novo usuario
+	Entao realizar cadastro de um usuario existente

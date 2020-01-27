@@ -30,12 +30,19 @@ public class SearchHomeLupa {
 	@FindBy(how = How.LINK_TEXT, using = "HP Z3200 Wireless Mouse")
 	private WebElement txt_produto;
 	
+	@FindBy(how = How.ID, using = "autoComplete")
+	private WebElement btn_escreveinvalidolupa;
+	
 	public void Clica_lupa_Home() {
 		btn_lupasearch.click();
 	}
 	
 	public void Escreve_na_lupa() {
 		btn_escrevelupa.sendKeys(Constant.Product + Keys.ENTER);
+	}
+	
+	public void Escreve_na_lupa_invalido() {
+		btn_escrevelupa.sendKeys(Constant.ProductInvalid + Keys.ENTER);
 	}
 	
 	public void Fecha_popup_pesquisa() {

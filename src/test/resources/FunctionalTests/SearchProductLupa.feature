@@ -9,3 +9,9 @@ Cenario:
 	Quando clicar na lupa
 	E escrever o nome do produto
 	Entao adicionar o produto no carrinho
+	
+Cenario:
+	Dado usuario na pagina inicial para usar a lupa
+	Quando clicar na lupa
+	E escrever o nome de um produto inexistente
+	Entao produto não ser encontrado

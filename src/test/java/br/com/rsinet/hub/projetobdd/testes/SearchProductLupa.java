@@ -10,6 +10,7 @@ import br.com.rsinet.hub.projetobdd.utility.Constant;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
+import junit.framework.Assert;
 
 public class SearchProductLupa {
 	
@@ -25,7 +26,7 @@ public class SearchProductLupa {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		SHL = new SearchHomeLupa(driver);
 	}
-
+	
 	@Quando("^clicar na lupa$")
 	public void clicar_na_lupa() {
 		SHL.Clica_lupa_Home();
@@ -36,9 +37,19 @@ public class SearchProductLupa {
 		SHL.Escreve_na_lupa();
 		SHL.Seleciona_produto_escolhido();
 	}
+	
+	@Quando("^escrever o nome de um produto inexistente$")
+	public void escrever_o_nome_do_produto_invalido() {
+		SHL.Escreve_na_lupa_invalido();
+	}
 
 	@Entao("^adicionar o produto no carrinho$")
 	public void adicionar_o_produto_no_carrinho() {
 		SHL.Adiciona_Produto_No_Carrinho();
+	}
+	
+	@Entao("^produto não ser encontrado$")
+	public void produto_inexistente() {
+		Assert.assertEquals("No results for " + Constant.ProductInvalid, "No results for Biscoito");
 	}
 }

@@ -2,6 +2,7 @@ package br.com.rsinet.hub.projetobdd.testes;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -57,6 +58,26 @@ public class Register {
 		RP.clica_checkbox1();
 		RP.clica_checkbox2();
 		RP.clica_registra();
+	}
+	
+	@Entao("^realizar cadastro de um usuario existente$")
+	public void realizar_cadastro_ja_existente() {
+		RP.escreve_nome();
+		RP.escreve_email();
+		RP.escreve_senha();
+		RP.escreve_confimarsenha();
+		RP.escreve_primeironome();
+		RP.escreve_ultimonome();
+		RP.escreve_telefone();
+		RP.escreve_pais();
+		RP.escreve_cidade();
+		RP.escreve_endereco();
+		RP.escreve_estado();
+		RP.escreve_codigopostal();
+		RP.clica_checkbox1();
+		RP.clica_checkbox2();
+		RP.clica_registra();
+		Assert.assertNotEquals(Constant.URL, driver.getCurrentUrl());
 	}
 
 }
