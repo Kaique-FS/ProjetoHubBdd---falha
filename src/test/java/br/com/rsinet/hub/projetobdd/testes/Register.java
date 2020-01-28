@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import br.com.rsinet.hub.projetobdd.dataProvider.ConfigFileReader;
 import br.com.rsinet.hub.projetobdd.managers.FileReaderManager;
 import br.com.rsinet.hub.projetobdd.managers.PageObjectManager;
+import br.com.rsinet.hub.projetobdd.managers.WebDriverManager;
 import br.com.rsinet.hub.projetobdd.pageobjects.HomePage;
 import br.com.rsinet.hub.projetobdd.pageobjects.RegisterPage;
 import br.com.rsinet.hub.projetobdd.pageobjects.SearchHomeLupa;
@@ -25,6 +26,7 @@ public class Register {
 	SearchHomeLupa SHL;
 	PageObjectManager pageObjectManager;
 	ConfigFileReader configFileReader;
+	WebDriverManager webDriverManager;
 
 	@Dado("^usario não cadastrado$")
 	public void usario_não_cadastrado() {
@@ -33,6 +35,9 @@ public class Register {
 		driver.get(Constant.URL);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigReader().getImplicitlyWait(), TimeUnit.SECONDS);
+//		webDriverManager = new WebDriverManager();
+//		driver = webDriverManager.getDriver();
+		pageObjectManager = new PageObjectManager(driver);
 		RP = new RegisterPage(driver);
 		HP = new HomePage(driver);
 
